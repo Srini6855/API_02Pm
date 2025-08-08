@@ -1,0 +1,198 @@
+Tetsing:
+
+UI Testing
+API Testing
+Mobile testing
+
+
+API Testing:
+------------
+
+Manual  - Postman
+Automation - Rest Assured (Java)
+
+
+Manual:
+-------
+
+1. Header
+2. Body/payload
+3. Response
+4. Response body
+5. Status code
+6. Request
+7. Parameters
+8. Authentication
+9. Authorization
+
+API(Application Programming Interface):
+---------------------------------------
+
+Client                                             Server
+(User)                     API                     (Data base - MySQL, Oracle , MangoDb)
+
+
+Bookmyshow    - Vetri Cinemas - Available - Book
+Vetri Cinemas  - Available 
+
+RESTAPI vs SOAP API
+
+REST:
+----
+Json:
+----
+{ 
+
+"key" : "value" 
+
+}
+
+
+https Methods:(request type)
+--------------
+
+GET     -  Get the created resource in the server
+PUT     -  Update the existing resource, if resource is not there  it will create a new resource
+POST    -  Create a new resource in the server.
+PATCH   -  Partial update 
+DELETE  -  Delete resource in the server
+
+Postman:
+--------
+Steps to do a sample request:
+-----------------------------
+
+Step 1: Download postman from google chrome.
+Step 2: Install postman.
+
+
+Steps to Create a simple request in Postman:
+--------------------------------------------
+What type of request ?
+What is the endpoint ?
+What are the headers ?
+
+Step 1: Create a new collection and name it API 2 Pm under crate collection and blank collection.
+Step 2: Create a folder with any name (Create folder)
+	... click three dots and select add folder and give any name
+Step 3: Create a new request
+
+
+1.Create Flight
+----------------
+
+--request type: POST
+--endpoint 'https://www.omrbranch.com/api/flights' 
+--header 'Content-Type: application/json' 
+--data '{
+    "flightName": "AirIndia",
+    "Country": "India",
+    "Destinations": "87",
+    "URL": "https:\/\/en.wikipedia.org\/wiki\/Air_India"
+}'
+
+
+Expected Response Code: 201
+Expected Response Body:
+
+{
+    "message": "Flight Created Successfully",
+    "data": {
+        "id": 47875,
+        "flightName": "AirIndia",
+        "Country": "India",
+        "Destinations": "87",
+        "URL": "https://en.wikipedia.org/wiki/Air_India",
+        "Created_date": "2025-05-12 13:11:48"
+    }
+}
+
+
+2. Update Flight
+----------------
+
+--request PUT 'https://www.omrbranch.com/api/flight/47875' 
+--header 'Content-Type: application/json' 
+--data '{
+    "flightName": "AirIndia",
+    "Country": "India",
+    "Destinations": 67,
+    "URL": "https:\/\/en.wikipedia.org\/wiki\/Air_India"
+}'
+
+
+Expected Response Code: 200
+Expected Response Body:
+
+{
+    "message": "Flight Updated Successfully",
+    "data": {
+        "id": 47875,
+        "flightName": "AirIndia",
+        "Country": "India",
+        "Destinations": "67",
+        "URL": "https://en.wikipedia.org/wiki/Air_India",
+        "Updated_date": "2025-05-12 13:14:04"
+    }
+}
+
+
+3. Get Flight
+--------------
+
+--request GET'https://www.omrbranch.com/api/flight/47875' 
+
+
+Expected Status Code: 200
+Expected Response Body:
+
+{
+    "data": {
+        "id": 47875,
+        "flightName": "AirIndia",
+        "Country": "India",
+        "Destinations": "980",
+        "URL": "https://en.wikipedia.org/wiki/Air_India",
+        "Created_Date": "2025-05-12 13:11:48",
+        "Updated_Date": "2025-05-12 13:17:16"
+    },
+    "support": {
+        "url": "https://www.omrbranch.com",
+        "text": "For Joining Automation Course, Please Contact-Velmurugan 9944152058"
+    }
+}
+
+4. Partial Update Flight
+------------------------
+
+--request PATCH 'https://www.omrbranch.com/api/flight/47875' 
+--header 'Content-Type: application/json' 
+--data '{
+    "Destinations": "90"
+}'
+
+
+Expected Response Code: 200
+Expected Response Body:
+
+{
+    "message": "Flight Updated Successfully",
+    "data": {
+        "id": 47875,
+        "flightName": "AirIndia",
+        "Country": "India",
+        "Destinations": "90",
+        "URL": "https://en.wikipedia.org/wiki/Air_India",
+        "Updated_date": "2025-05-12 13:17:16"
+    }
+}
+
+
+5. Delete Flight
+----------------
+
+--request DELETE 'https://www.omrbranch.com/api/flight/47875' 
+
+
+Expected Response Code: 204
+Expected Response Body: Returns Nothing
