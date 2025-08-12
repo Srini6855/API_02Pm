@@ -196,3 +196,73 @@ Expected Response Body:
 
 Expected Response Code: 204
 Expected Response Body: Returns Nothing
+
+Variables:
+----------
+
+1. Environment Variables:
+-------------------------
+
+- click environment quick look.
+- Add environment.
+- It is common for all Collections.
+
+2. Collection Variables:
+------------------------
+
+- Set at run time.
+- Need to write the Java Script in Scripts section in post response.
+
+3. Global Variables:
+--------------------
+
+- Click environment quick look.
+- Add global variable.
+- It is common for all collection and all environment.
+
+
+Postman Code:
+-------------
+
+var response = pm.response.json();
+var id = response.data.id;
+pm.CollectionVaraibles.set("FlightID",id);
+
+Variables:
+----------
+
+1. Collection
+2. Environment
+3. Global
+
+
+
+Collection variable:
+--------------------
+
+-> Applicable for particular collection.
+-> By using javascript code.
+
+
+Environment variable:
+---------------------
+
+-> Dev
+-> Qa 
+-> live/production
+
+https://www.omrbranch.com/api/flights      ---> live
+https://www.omrbranch.com/api/flights/dev ----> dev
+https://www.omrbranch.com/api/flights/qa  ----> qa
+
+
+Global variable:
+----------------
+
+-> It is applicable for both collection and environment
+
+-> Variables.
+-> API Chaining -> Passing a value from one response body to another request.
+-> Run as Collection -> To run all request in single go
+
+
